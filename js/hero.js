@@ -2,7 +2,7 @@ function getHeroData() {
     /* Here get the hero id from localstorage */
     const heroId = window.localStorage.getItem('heroId');
     if (!heroId) {
-        console.error('Hero ID not found.');
+        // console.error('Hero ID not found.');
         return;
     }
 
