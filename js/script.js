@@ -9,9 +9,11 @@ function fetchCharacterData() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
+            favHeroDataFunc(data.data.results)
             const characterContainer = document.getElementById('character-container');
             const characterArr = data.data.results;
+            
 
             function renderCharacters(characters) {
                 let characterHTML = '';
@@ -23,7 +25,7 @@ function fetchCharacterData() {
                             <img src="${character.thumbnail.path}.${character.thumbnail.extension}" alt="${character.name}">
                             <p>${character.description || 'No description available.'}</p>
                         </div>
-                        <button id="add-superhero_${character.id}">Add to Favourites</button>
+                        <button onclick="setFavId(${character.id})">Add to Favourites</button>
                     </div>`;
                 });
                 if (characterContainer != null && characterContainer != '') {
@@ -52,6 +54,14 @@ function fetchCharacterData() {
 function heroData(heroId) {
     window.localStorage.setItem('heroId', heroId);
     window.location.href = 'hero.html';
+}
+
+
+/* Here we will add fav hero id to localstorage */
+let favIdArr = []
+function setFavId(favId){ 
+    favIdArr.push(favId)
+    window.localStorage.setItem('favHeroId', favIdArr);
 }
 
 fetchCharacterData();
