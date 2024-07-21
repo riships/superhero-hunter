@@ -60,18 +60,26 @@ body {
     display: flex;
     justify-content: space-between;
 }
+#char-div{
+    margin-top: 20px;
+}
 
 
 /* Favourite super hero page styling starts here */
 
 
 .container {
-    width: 100%;
+    /* width: 100%; */
     /* max-width: 500px; */
     background: #fff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+}
+#superhero-list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 h1 {

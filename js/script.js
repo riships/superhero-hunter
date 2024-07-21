@@ -3,22 +3,42 @@ const privateKey = 'e476d13f73a6abf127b9870af7d8e8445887dcab';
 const ts = new Date().getTime().toString();
 const hash = CryptoJS.MD5(ts + privateKey + publicKey).toString();
 
-function fetchCharacterData() {
+
+
+let characterArr;
+async function fetchCharacters(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data.data.results;
+    } catch (error) {
+        // console.error('Error fetching characters:', error);
+        return null;
+    }
+}
+
+async function main() {
     const url = `https://gateway.marvel.com:443/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+    characterArr = await fetchCharacters(url);
+    if (characterArr) {
+        renderCharacters(characterArr);
+        favHeroDataFunc(characterArr);
+    } else {
+        // console.log('Failed to fetch characters');
+    }
+}
 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            // console.log(data);
-            favHeroDataFunc(data.data.results)
-            const characterContainer = document.getElementById('character-container');
-            const characterArr = data.data.results;
-            
+main();
 
-            function renderCharacters(characters) {
-                let characterHTML = '';
-                characters.forEach(character => {
-                    characterHTML += `
+
+const characterContainer = document.getElementById('character-container');
+function renderCharacters(characters) {
+    let characterHTML = '';
+    characters.forEach(character => {
+        characterHTML += `
                     <div class="character-card">
                         <div onclick="heroData(${character.id})">
                             <h2>${character.name}</h2>
@@ -27,26 +47,23 @@ function fetchCharacterData() {
                         </div>
                         <button onclick="setFavId(${character.id})">Add to Favourites</button>
                     </div>`;
-                });
-                if (characterContainer != null && characterContainer != '') {
-                    characterContainer.innerHTML = characterHTML;
-                }
-            }
+    });
+    if (characterContainer != null && characterContainer != '') {
+        characterContainer.innerHTML = characterHTML;
+    }
+}
 /* Here the serch-bar function implemented to search char in the page */
-            renderCharacters(characterArr);
-            let serchBar = document.getElementById('search-bar');
-            if (serchBar != null) {
 
-                serchBar.addEventListener('input', function (e) {
-                    const query = e.target.value.toLowerCase();
-                    const filteredCharacters = characterArr.filter(character =>
-                        character.name.toLowerCase().includes(query)
-                    );
-                    renderCharacters(filteredCharacters);
-                });
-            }
-        })
-        .catch(error => console.error('Error:', error));
+let serchBar = document.getElementById('search-bar');
+if (serchBar != null) {
+
+    serchBar.addEventListener('input', function (e) {
+        const query = e.target.value.toLowerCase();
+        const filteredCharacters = characterArr.filter(character =>
+            character.name.toLowerCase().includes(query)
+        );
+        renderCharacters(filteredCharacters);
+    });
 }
 
 /* Here we have added hero data in localstorage and onclick moved to hero pages */
@@ -59,9 +76,7 @@ function heroData(heroId) {
 
 /* Here we will add fav hero id to localstorage */
 let favIdArr = []
-function setFavId(favId){ 
+function setFavId(favId) {
     favIdArr.push(favId)
-    window.localStorage.setItem('favHeroId', favIdArr);
+    window.localStorage.setItem('favHeroId', JSON.stringify(favIdArr));
 }
-
-fetchCharacterData();

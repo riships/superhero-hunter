@@ -1,15 +1,16 @@
 let favList = document.getElementById('superhero-list');
-let favSuperheroIds = localStorage.getItem('favHeroId')||[]
 
-function favHeroDataFunc(characters) {
+
+function favHeroDataFunc(characterArr) {
+    let favSuperheroIds = JSON.parse(localStorage.getItem('favHeroId')) || []
     let favSuperheroes;
-    if (characters != undefined && characters != null && characters != '') {
-        favSuperheroes = characters.filter(characterItem => favSuperheroIds.includes(characterItem.id))
+    if (characterArr != undefined && characterArr != null && characterArr != '') {
+        favSuperheroes = characterArr.filter(characterItem => favSuperheroIds.includes(characterItem.id))
     }
     let characterHTML = '';
-    let superheroList = document.getElementById('superhero-list')
+    let superheroList = document.getElementById('superhero-list');
+    // console.log(favSuperheroes);
     favSuperheroes.forEach(character => {
-        
         characterHTML += `
                     <div class="character-card">
                         <div onclick="heroData(${character.id})">
@@ -17,10 +18,16 @@ function favHeroDataFunc(characters) {
                             <img src="${character.thumbnail.path}.${character.thumbnail.extension}" alt="${character.name}">
                             <p>${character.description || 'No description available.'}</p>
                         </div>
-                        <button onclick="setFavId(${character.id})">Remove from Favourite</button>
+                        <button onclick="removeFromFav(${character.id})">Remove from Favourite</button>
                     </div>`;
     });
     if (superheroList != null && superheroList != '') {
         superheroList.innerHTML = characterHTML;
     }
+}
+function removeFromFav(characterId) {
+    let favSuperheroIds = JSON.parse(localStorage.getItem('favHeroId')) || []
+    let removedFavSuperheroes = favSuperheroIds.filter(favSuperheroId => favSuperheroId !== characterId);
+    window.localStorage.setItem('favHeroId', JSON.stringify(removedFavSuperheroes));
+    favHeroDataFunc(characterArr)
 }
