@@ -75,8 +75,22 @@ function heroData(heroId) {
 
 
 /* Here we will add fav hero id to localstorage */
-let favIdArr = []
-function setFavId(favId) {
-    favIdArr.push(favId)
-    window.localStorage.setItem('favHeroId', JSON.stringify(favIdArr));
+let favIdArr;
+let favHeroCount = JSON.parse(localStorage.getItem('favHeroId')) || [];
+if (favHeroCount === undefined) {
+    favIdArr = []
+}else{
+    favIdArr = favHeroCount
 }
+function setFavId(favId) {
+    if (favId != undefined) {
+        favIdArr.push(favId)
+        window.localStorage.setItem('favHeroId', JSON.stringify(favIdArr));
+    }
+    /* Here the count of fav heros set */
+    
+    if (document.getElementById('numberOfFavCount')) {
+        document.getElementById('numberOfFavCount').innerHTML = favHeroCount.length;
+    }
+}
+setFavId()

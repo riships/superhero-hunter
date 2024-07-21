@@ -8,12 +8,20 @@
     <title>Superhero Hunter</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        crossorigin="anonymous" />
 </head>
 
 <body>
     <div class="mainDiv">
         <div id="search-container">
             <input type="text" id="search-bar" placeholder="Search for a superhero...">
+            <div class="favourite-section">
+                <a href="favouriteHero.html">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="number-of-fav-count" id="numberOfFavCount">0</span>
+                </a>
+            </div>
         </div>
         <div id="character-container"></div>
     </div>

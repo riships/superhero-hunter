@@ -2,7 +2,6 @@ function getHeroData() {
     /* Here get the hero id from localstorage */
     const heroId = window.localStorage.getItem('heroId');
     if (!heroId) {
-        // console.error('Hero ID not found.');
         return;
     }
 
@@ -55,7 +54,7 @@ function getHeroData() {
                     </div>`;
                 charDiv.innerHTML = heroHtml;
             } else {
-                console.error('Element with ID "char-div" not found.');
+                // console.error('Element with ID "char-div" not found.');
             }
         })
         .catch(error => console.error('Error fetching hero data:', error));

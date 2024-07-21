@@ -64,6 +64,28 @@ body {
     margin-top: 20px;
 }
 
+.favourite-section{
+    position: relative;
+    display: inline;
+    vertical-align: middle;
+}
+.favourite-section i {
+    margin-top: 10px;
+    font-size: 30px;
+    color: rgb(197, 5, 5);
+}
+.number-of-fav-count {
+    position: absolute;
+    top: 5px;
+    padding: 0px 5px;
+    border-radius: 50%;
+    background: #b0aeae;
+    left: 21px;
+    color: whitesmoke;
+    font-size: 14px;
+    font-weight: 500;
+}
+
 
 /* Favourite super hero page styling starts here */
 
@@ -72,9 +94,10 @@ body {
     /* width: 100%; */
     /* max-width: 500px; */
     background: #fff;
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin-top: 0;
 }
 #superhero-list{
     display: flex;
@@ -83,8 +106,9 @@ body {
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin:0;
     text-align: left;
+    padding: 20px 0;
 }
 
 ul {
