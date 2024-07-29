@@ -88,3 +88,10 @@ function removeFromFav(characterId) {
     window.localStorage.setItem('favHeroId', JSON.stringify(removedFavSuperheroes));
     favHeroDataFunc(characterArr)
 }
+```
+
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
