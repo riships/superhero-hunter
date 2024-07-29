@@ -25,15 +25,6 @@ This web application showcases a list of favorite superheroes. You can view deta
 
 ## Project Structure
 
-my-favourite-superheroes/
-├── css/
-│ └── style.css
-├── js/
-│ ├── fav.js
-│ └── script.js
-├── index.html
-└── README.md
-
 
 - `css/style.css`: Contains the styling for the application.
 - `js/fav.js`: Handles fetching and displaying favorite superheroes.
