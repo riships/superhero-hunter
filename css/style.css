@@ -101,8 +101,9 @@ body {
 }
 #superhero-list{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
 h1 {

@@ -15,7 +15,7 @@ async function fetchCharacters(url) {
         const data = await response.json();
         return data.data.results;
     } catch (error) {
-        // console.error('Error fetching characters:', error);
+        console.error('Error fetching characters:', error);
         return null;
     }
 }
@@ -26,8 +26,9 @@ async function main() {
     if (characterArr) {
         renderCharacters(characterArr);
         favHeroDataFunc(characterArr);
+
     } else {
-        // console.log('Failed to fetch characters');
+        console.log('Failed to fetch characters');
     }
 }
 
@@ -82,6 +83,7 @@ if (favHeroCount === undefined) {
 }else{
     favIdArr = favHeroCount
 }
+
 function setFavId(favId) {
     if (favId != undefined) {
         favIdArr.push(favId)
