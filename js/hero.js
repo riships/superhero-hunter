@@ -13,7 +13,10 @@ async function getHeroData() {
         console.error('Missing required parameters: heroId, ts, publicKey, or hash');
     }
     let data = await fetchCharacters(url);
-    let hero = data[0]
+    let hero;
+    if (data) {
+        hero = data[0]
+    }
     if (hero) {
         // console.log(hero);
         const charDiv = document.getElementById('char-div');
