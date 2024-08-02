@@ -18,7 +18,6 @@ async function getHeroData() {
         hero = data[0]
     }
     if (hero) {
-        // console.log(hero);
         const charDiv = document.getElementById('char-div');
         if (charDiv) {
 
@@ -51,7 +50,7 @@ async function getHeroData() {
                         <div class="section">
                             <h2>Events</h2>
                             <ul>
-                                ${hero.events.items.map(event => `<li><a href="${event.resourceURI}">${event.name}</a></li>`).join('')}
+                                ${hero.events.items.map(event => `<li>${event.name}</li>`).join('')}
                             </ul>
                         </div>
                         <div class="section links">

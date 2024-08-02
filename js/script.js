@@ -71,7 +71,7 @@ if (serchBar != null) {
 
 function heroData(heroId) {
     window.localStorage.setItem('heroId', heroId);
-    window.location.href = 'hero.html';
+    window.location.href = './html/hero.html';
 }
 
 
@@ -83,6 +83,8 @@ if (favHeroCount === undefined) {
 }else{
     favIdArr = favHeroCount
 }
+
+
 
 function setFavId(favId) {
     if (favId != undefined) {

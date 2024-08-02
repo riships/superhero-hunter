@@ -7,9 +7,8 @@ function favHeroDataFunc(characterArr) {
     if (characterArr != undefined && characterArr != null && characterArr != '') {
         favSuperheroes = characterArr.filter(characterItem => favSuperheroIds.includes(characterItem.id))
     }
-    let characterHTML = '';
     let superheroList = document.getElementById('superhero-list');
-    // console.log(favSuperheroes);
+    let characterHTML = "";
     favSuperheroes.forEach(character => {
         characterHTML += `
                     <div class="character-card">
