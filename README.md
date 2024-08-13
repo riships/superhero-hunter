@@ -36,13 +36,13 @@ This web application showcases a list of favorite superheroes. You can view deta
 1. **Clone the repository:**
 
     ```sh
-    git clone https://github.com/yourusername/my-favourite-superheroes.git
+    git clone https://github.com/riships/superhero-hunter.git
     ```
 
 2. **Navigate to the project directory:**
 
     ```sh
-    cd my-favourite-superheroes
+    cd superhero-hunter
     ```
 
 3. **Open `index.html` in your preferred web browser.**
